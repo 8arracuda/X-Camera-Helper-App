@@ -1,0 +1,48 @@
+.nav-tabs>.btn {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+a.list-group-item.ng-binding.ng-scope.active {
+    border-color:  #ffffff;
+}
+
+.overlay {
+    -ms-word-break: break-all;
+    word-break: break-all;
+
+    word-break: break-word;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+}
+
+.list-group-item {
+    overflow-x: hidden;
+
+    -ms-word-break: break-all;
+    word-break: break-all;
+
+    word-break: break-word;
+
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+
+}
+
+.btn {
+    padding: 12px;
+}
+.scrollable-content {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#mainSidebar > div > div > div.btn-group > a.btn.btn-default.active {
+    background-color: #ffffff;
+    color: #000000;
+}

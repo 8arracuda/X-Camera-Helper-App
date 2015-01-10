@@ -1,12 +1,197 @@
-<div ng-controller="StartController">
-
+<!--<div ng-controller="StartController">-->
+    <div class="scrollable">
+        <div class="scrollable-content">
     <div class="panel">
-        <div class="panel-heading">
-            headline
-        </div>
-        <div class="panel-body">
-            text {{ foo }}
+    <canvas id="canvas" width="200" height="200" style="border:1px solid #000000;"></canvas>
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        Setting for the generated cameras
+                    </h2>
+                </div>
+                <div class="panel-body">
+                    <select name="infoBox" size="5" id="infoBoxSelect"></select>
+
+                    <input
+                            bs-form-control
+                            type="number"
+                            label="Amount of cameras"
+                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                            class="col-xs-9 col-sm-10 col-lg-11"
+                            ng-change="updateCanvas()"
+                            ng-model="amountOfCameras"
+                            />
+
+                    <!--around 30 GA aircrafts, up to 100 for heavies-->
+
+                    <input
+                            bs-form-control
+                            type="number"
+                            label="radius"
+                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                            class="col-xs-9 col-sm-10 col-lg-11"
+                            ng-change="updateCanvas()"
+                            ng-model="radius"
+                            />
+
+                    <input
+                            bs-form-control
+                            type="number"
+                            label="offset (front/back)"
+                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                            class="col-xs-9 col-sm-10 col-lg-11"
+                            ng-change="updateCanvas()"
+                            ng-model="offset_y"
+                            />
+                    <br>
+
+                </div>
+
+
+                <div class="panel-heading">
+                    <h2 class="panel-title">
+                        X-Camera options
+                    </h2>
+                </div>
+                <div class="panel-body">
+
+
+                    <input
+                            bs-form-control
+                            type="number"
+                            label="linear transition Frames"
+                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                            class="col-xs-9 col-sm-10 col-lg-11"
+                            ng-model="transitionFrames"
+                            />
+
+                    <input bs-form-control
+                           label="Auto Advance"
+                           type="checkbox"
+                           name="settingAutoAdvance"
+                           ng-model="settingAutoAdvance"
+                           checked>
+
+                    <input bs-form-control
+                           label="TrackIR enabled"
+                           type="checkbox"
+                           name="settingTrackIREnabled"
+                           ng-model="settingTrackIREnabled"
+                           checked>
+
+                    <input bs-form-control
+                           label="Smooth Transition"
+                           type="checkbox"
+                           name="settingSmoothTransition"
+                           ng-model="settingSmoothTransition"
+                           checked>
+
+                    <input bs-form-control
+                           label="HeadShake"
+                           type="checkbox"
+                           name="settingHeadShake"
+                           ng-model="settingHeadShake"
+                           checked>
+
+                    <input bs-form-control
+                           label="RetainMouseLookPosition"
+                           type="checkbox"
+                           name="settingRetainMouseLookPosition"
+                           ng-model="settingRetainMouseLookPosition"
+                           checked>
+
+                    <input bs-form-control
+                           label="Enable Temporary Positioning"
+                           type="checkbox"
+                           name="settingEnableTemporaryPositioning"
+                           ng-model="settingEnableTemporaryPositioning"
+                           checked>
+                    <br>
+
+                    <input bs-form-control
+                           label="Enable Linear Transition"
+                           type="checkbox"
+                           name="settingEnableLinearTransition"
+                           ng-model="settingEnableLinearTransition"
+                           checked>
+
+                    <input bs-form-control
+                           label="Limit TrackIR"
+                           type="checkbox"
+                           name="settingLimitTrackIR"
+                           ng-model="settingLimitTrackIR"
+                           checked>
+
+                    <input bs-form-control
+                           label="Enable FOV"
+                           type="checkbox"
+                           name="settingEnableFOV"
+                           ng-model="settingEnableFOV"
+                           checked>
+
+                    <input bs-form-control
+                           label="Smooth Camera Joins"
+                           type="checkbox"
+                           name="settingSmoothCameraJoins"
+                           ng-model="settingSmoothCameraJoins"
+                           checked>
+
+                    <input bs-form-control
+                           label="Enable Track Heading"
+                           type="checkbox"
+                           name="settingEnableTrackHeading"
+                           ng-model="settingEnableTrackHeading"
+                           checked>
+
+                    <input bs-form-control
+                           label="Enable Track Pitch"
+                           type="checkbox"
+                           name="settingEnableTrackPitch"
+                           ng-model="settingEnableTrackPitch"
+                           checked>
+
+                    <input bs-form-control
+                           label="Enable Level Camera"
+                           type="checkbox"
+                           name="settingEnableLevelCamera"
+                           ng-model="settingEnableLevelCamera"
+                           checked>
+
+                    <input bs-form-control
+                           label="Enable View Axis"
+                           type="checkbox"
+                           name="autoAdvance"
+                           ng-model="settingEnableViewAxis"
+                           checked>
+
+
+                    <button class="btn btn-primary" ng-click="generate()">generate</button>
+                    <br>
+
+                    <button class="btn btn-primary" ng-click="main()">main</button>
+                    <input
+                            bs-form-control
+                            type="text"
+                            label="default Values"
+                            label-class="col-xs-3 col-sm-2 col-lg-1"
+                            class="col-xs-9 col-sm-10 col-lg-11"
+                            ng-model="defaultValues"
+                            />
+                    <br>
+                    <select onchange="updatePreset()" name="top5" size="5" id="mySelect"></select>
+
+                    <div class="panel-heading">
+                        <h2 class="panel-title">
+                            Output
+                        </h2>
+                    </div>
+                    <br>
+
+                    <div class="panel-body" id="outputNew"></div>
+
+                </div>
+            </div>
+
         </div>
     </div>
-
-</div>
+<!--</div>-->

@@ -1,26 +1,53 @@
+<div class="scrollable-content">
+    <div class="panel">
+
+        <div class="panel-heading">
+
+        </div>
+        <div class="panel-body">
+
+            <button ng-click="saveFile()">saveFile</button>
+            <div class="example">
+                <div id="dropZone">Drop X-Camera CSV-file(s) here</div>
+                <output id="list"></output>
+            </div>
+
+            <div class="col-lg-5">
+                <select ng-model="selectedFile"
+                        size="5"
+                        id="CSVSelect"
+                        ng-options="file.name for file in allCamerasArray">
+                </select>
+            </div>
+            <div class="col-lg-5">
+                <output id="fileOutput"></output>
+            </div>
 
 
+            <!--<select ng-model="selectedCategory"-->
+            <!--size="5"-->
+            <!--id="categoriesSelect">-->
+            <!--<option ng-repeat="category in selectedFile.categoriesArray">-->
+            <!--{{ category.name }} ({{category.camerasArray.length}} cameras)-->
+            <!--</option>-->
+            <!--</select>-->
 
-<div class="panel">
 
-    <div class="panel-heading">
+            <div class="list-group">
+                <div class="list-group-item"
+                     ng-repeat="category in selectedFile.categoriesArray">
+                    <b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>
 
-    </div>
-    <div class="panel-body">
-        <div class="example">
-            <div id="dropZone">Drop X-Camera CSV-file(s) here</div>
-            <output id="list"></output>
+                    <div class="list-group-item"
+                         ng-repeat="camera in category.camerasArray">
+                        {{ camera[1] }}
+                        <div ng-show="camera[2] != 0">(<i class="fa fa-video-camera"></i> view ID {{ camera[2]}})</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <select name="categoriesBox" size="5" id="categoriesSelect">
-        <option ng-repeat="cat in allCamerasArray"
-                value="{{cat.name}}">
-            {{cat.name}}
-        </option>
-        </select>
-
-        <output id="fileOutput"></output>
     </div>
-
 </div>
 

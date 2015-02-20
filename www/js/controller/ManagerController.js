@@ -1,6 +1,44 @@
 sdApp.controller('ManagerController', function ($scope) {
 
 
+    $scope.saveFile = function () {
+
+        function onInitFs(fs) {
+
+            fs.root.getFile('log.txt', {create: true, exclusive: true}, function(fileEntry) {
+
+                // fileEntry.isFile === true
+                // fileEntry.name == 'log.txt'
+                // fileEntry.fullPath == '/log.txt'
+
+            }, errorHandler);
+
+        }
+
+
+        navigator.webkitPersistentStorage.requestQuota(1024*1024,
+            function(grantedBytes) {
+                //window.requestFileSystem(window.PERSISTENT, grantedBytes, onInitFs, errorHandler);
+
+                  window.requestFileSystem  = window.requestFileSystem || window.webkitRequestFileSystem;
+                window.requestFileSystem(window.PERSITENT, 1024*1024, onInitFs, errorHandler);
+            },
+            function(errorCode) {
+                alert("Storage not granted.");
+            }
+        );
+
+        function errorHandler(e) {
+            var msg = '';
+
+            msg = e.name + " - " + e.message;
+
+            console.log('Error: ' + msg);
+        }
+
+    };
+
+
     function convertCSVToCategoriesArray(CSVString) {
 
         var camerasArray = CSVString.split(/\r\n|\n/);
@@ -10,19 +48,23 @@ sdApp.controller('ManagerController', function ($scope) {
 
         var tmpCategoryArray = new Array();
 
-        for (var k = 0; k < camerasArray.length; k++) {
+        for (var k = 1; k < camerasArray.length; k++) {
 
             var tmpArray = camerasArray[k].split(",");
+
+            //console.log(tmpArray);
 
             if (lastCategoryName == tmpArray[0]) {
                 tmpCategoryArray.push(tmpArray);
             } else {
-                categoriesArray.push({
-                    name: lastCategoryName,
-                    camerasArray: tmpCategoryArray
-                });
-                tmpCategoryArray = new Array();
-                tmpCategoryArray.push(tmpArray);
+                if (k>1) {
+                    categoriesArray.push({
+                        name: lastCategoryName,
+                        camerasArray: tmpCategoryArray
+                    });
+                    tmpCategoryArray = new Array();
+                    tmpCategoryArray.push(tmpArray);
+                }
             }
             lastCategoryName = tmpArray[0];
         }
@@ -30,7 +72,6 @@ sdApp.controller('ManagerController', function ($scope) {
         return categoriesArray;
 
     }
-
 
     function handleFileSelect(evt) {
         evt.stopPropagation();

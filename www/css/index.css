@@ -51,4 +51,9 @@ a.list-group-item.ng-binding.ng-scope.active {
     height: 100px;
     border-width: 2px;
     border-style: dotted;
+    text-align: center;
+}
+
+#dropZoneText {
+    text-align: center;
 }

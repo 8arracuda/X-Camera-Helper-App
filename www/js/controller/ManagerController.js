@@ -13,16 +13,16 @@ sdApp.controller('ManagerController', function ($scope, $rootScope) {
 
     $scope.expectArrayCategoryNames = [
         "Cockpit (landing)",
-        "b",
-        "b",
-        "b",
-        "b",
-        "b",
-        "b",
-        "b",
-        "b",
-        "b",
-        "b"
+        "Cockpit (cruise)",
+        "Action Cam",
+        "Taxi",
+        "Cabin",
+        "Pre-Flight Inspectations",
+        "Orbit Animation 1",
+        "Orbit Animation 2",
+        "Flyby Animation 1",
+        "Flyby Animation 2",
+        "Flyby Animation 3"
     ];
 
     $scope.filesWereDropped=false;
@@ -69,8 +69,35 @@ sdApp.controller('ManagerController', function ($scope, $rootScope) {
     $scope.openOverlay = function() {
         $rootScope.toggle('myOverlay', 'on');
 
-        $scope.csvFilename = "foo";
-        $scope.csvString = "foo2";
+        $scope.csvFilename = $scope.selectedFile.name;
+//        $scope.csvString = JSON.stringify($scope.selectedFile);
+
+
+        console.log("selectedFile");
+        console.dir($scope.selectedFile);
+        console.log("selectedFile.categoryArray");
+        console.dir($scope.selectedFile.categoriesArray);
+
+
+       // for (var cat in $scope.selectedFile.categoriesArray) {
+
+        $scope.csvString = 'fkdasjfdkljdlksada\n';
+
+        for (var i = 0; i<$scope.selectedFile.categoriesArray.length; i++) {
+            //console.log(cat.join(','));
+            //cat2 = cat3;
+            //console.dir(cat2);
+
+
+
+
+            //console.log(JSON.stringify($scope.selectedFile.categoriesArray[i]));
+            //console.log($scope.selectedFile.categoriesArray[i].camerasArray.join(','));
+
+            $scope.csvString = $scope.csvString + $scope.selectedFile.categoriesArray[i].camerasArray.join(',') + '\n';
+
+
+        }
 
     };
 

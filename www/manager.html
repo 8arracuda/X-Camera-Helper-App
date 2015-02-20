@@ -5,7 +5,7 @@
 <!--foo-->
 <!--</div>-->
 
-<div content-for="navbarAction">
+<div content-for="navbarAction" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
     <!--<button ng-click="resetManagmentPage()">reset</button><span>reset</span>-->
     <div class="btn btn-navbar" ng-click="resetManagementPage()">
         <i class="fa fa-refresh"></i> reset
@@ -48,38 +48,64 @@
             <!--</option>-->
             <!--</select>-->
 
+
+            <!--BACKUP-->
+            <!--<div class="list-group">-->
+            <!--<div class="list-group-item"-->
+            <!--ng-repeat="category in selectedFile.categoriesArray">-->
+
+            <!--<div ng-show="expectArrayCategoryNames[$index]==category.name">-->
+            <!--<b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>-->
+            <!--</div>-->
+
+            <!--<div ng-show="expectArrayCategoryNames[$index]!=category.name">-->
+            <!--<div class="highlightNotMatching">-->
+            <!--<b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>-->
+            <!--&lt;!&ndash;<div ng-show="expectArrayCategoryNames[$index]"&ndash;&gt;-->
+            <!--(should be {{expectArrayCategoryNames[$index]}})-->
+            <!--</div>-->
+            <!--</div>-->
+            <!---->
+            <!--&lt;!&ndash;<div ng-show="filesWereDropped">&ndash;&gt;-->
+            <!--&lt;!&ndash;$scope.filesWereDropped=false;&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+            <!--<div class="list-group-item"-->
+            <!--ng-repeat="camera in category.camerasArray">-->
+            <!--{{ camera[1] }}-->
+            <!--<div ng-show="camera[2] != 0">(<i class="fa fa-video-camera"></i> view ID {{ camera[2]}})</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--BACKUP-->
+
+
             <div class="list-group">
                 <div class="list-group-item"
                      ng-repeat="category in selectedFile.categoriesArray">
 
                     <div ng-show="expectArrayCategoryNames[$index]==category.name">
-                        <b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>
+                        Category: <input ng-model="category.name" type="text">({{ category.camerasArray.length }} cameras)
                     </div>
 
                     <div ng-show="expectArrayCategoryNames[$index]!=category.name">
                         <div class="highlightNotMatching">
-                        <b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>
-                        <!--<div ng-show="expectArrayCategoryNames[$index]"-->
-                        (should be {{expectArrayCategoryNames[$index]}})
+                            Category: <input ng-model="category.name" type="text"> ({{ category.camerasArray.length }} cameras)
+                            (should be "{{expectArrayCategoryNames[$index]}}")
+                        </div>
                     </div>
-                    </div>
-
-
-                    <!--<div ng-show="filesWereDropped">-->
-                    <!--$scope.filesWereDropped=false;-->
-                    <!--</div>-->
-
 
                     <div class="list-group-item"
                          ng-repeat="camera in category.camerasArray">
-                        {{ camera[1] }}
+
+                        <input ng-model="camera[1]" type="text">
+
+                        <!--view ID-->
                         <div ng-show="camera[2] != 0">(<i class="fa fa-video-camera"></i> view ID {{ camera[2]}})</div>
                     </div>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 
@@ -91,7 +117,9 @@
     <h4 class="overlay-title">CSV output</h4>
 
     <b>{{ csvFilename }}</b><br>
-    {{ csvString }}
+    <output>
+        {{ csvString }}
+    </output>
 
     <p toggle="off" bubble target="myOverlay">
         <!--<span class="btn btn-primary">Ok</span>-->

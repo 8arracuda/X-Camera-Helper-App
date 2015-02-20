@@ -4,6 +4,10 @@ sdApp.controller('SidebarController', function ($scope) {
         {
             labelText: 'Start',
             linkURL: 'start'
+        },
+        {
+            labelText: 'Manager',
+            linkURL: 'manager'
         }
     ];
 

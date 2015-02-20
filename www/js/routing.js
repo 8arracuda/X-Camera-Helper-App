@@ -9,6 +9,10 @@ sdApp.config(function ($routeProvider) {
             templateUrl: 'start.html',
             controller: 'StartController'
         }).
+        when('/manager', {
+            templateUrl: 'manager.html',
+            controller: 'ManagerController'
+        }).
         otherwise({
             redirectTo: '/start'
         });

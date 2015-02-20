@@ -1,0 +1,26 @@
+
+
+
+<div class="panel">
+
+    <div class="panel-heading">
+
+    </div>
+    <div class="panel-body">
+        <div class="example">
+            <div id="dropZone">Drop X-Camera CSV-file(s) here</div>
+            <output id="list"></output>
+        </div>
+
+        <select name="categoriesBox" size="5" id="categoriesSelect">
+        <option ng-repeat="cat in allCamerasArray"
+                value="{{cat.name}}">
+            {{cat.name}}
+        </option>
+        </select>
+
+        <output id="fileOutput"></output>
+    </div>
+
+</div>
+

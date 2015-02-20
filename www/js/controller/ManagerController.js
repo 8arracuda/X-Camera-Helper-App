@@ -1,4 +1,32 @@
-sdApp.controller('ManagerController', function ($scope) {
+sdApp.controller('ManagerController', function ($scope, $rootScope) {
+
+
+    $scope.resetManagementPage = function () {
+
+        var answer = alert('This will unload the current CSV-files and it allows you to load new CSV-files into the application. Do you want to continue?');
+
+        if (answer) {
+        $scope.filesWereDropped=false;
+        }
+
+    };
+
+    $scope.expectArrayCategoryNames = [
+        "Cockpit (landing)",
+        "b",
+        "b",
+        "b",
+        "b",
+        "b",
+        "b",
+        "b",
+        "b",
+        "b",
+        "b"
+    ];
+
+    $scope.filesWereDropped=false;
+
 
 
     $scope.saveFile = function () {
@@ -14,7 +42,6 @@ sdApp.controller('ManagerController', function ($scope) {
             }, errorHandler);
 
         }
-
 
         navigator.webkitPersistentStorage.requestQuota(1024*1024,
             function(grantedBytes) {
@@ -38,6 +65,14 @@ sdApp.controller('ManagerController', function ($scope) {
 
     };
 
+
+    $scope.openOverlay = function() {
+        $rootScope.toggle('myOverlay', 'on');
+
+        $scope.csvFilename = "foo";
+        $scope.csvString = "foo2";
+
+    };
 
     function convertCSVToCategoriesArray(CSVString) {
 
@@ -77,18 +112,19 @@ sdApp.controller('ManagerController', function ($scope) {
         evt.stopPropagation();
         evt.preventDefault();
 
+        $scope.filesWereDropped=true;
+
         var files = evt.dataTransfer.files; // FileList object.
 
-        var fileOutput = document.getElementById('fileOutput');
+        //var fileOutput = document.getElementById('fileOutput');
 
         var fileReadCounter = 0;
 
         $scope.allCamerasArray = new Array();
         for (var i = 0, f; f = files[i]; i++) {
 
-            fileOutput.innerHTML = fileOutput.innerHTML + '<b>' + f.name + ' (' + f.size + ' bytes)</b><br>';
+            //fileOutput.innerHTML = fileOutput.innerHTML + '<b>' + f.name + ' (' + f.size + ' bytes)</b><br>';
 
-            var filename = f.name;
             var reader = new FileReader();
 
             reader.onload = function (e) {

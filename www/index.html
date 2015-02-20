@@ -42,10 +42,10 @@
 
     <div class="scrollable">
         <div class="scrollable-content">
-                    <div class="list-group list-group-demonstration" toggle="off" bubble target="mainSidebar">
-                        <a ng-repeat="t in sidebar_main" class="list-group-item" href="#/{{t.linkURL}}">{{t.labelText}}
-                            <i class="fa fa-chevron-right pull-right"></i></a>
-                    </div>
+            <div class="list-group list-group-demonstration" toggle="off" bubble target="mainSidebar">
+                <a ng-repeat="t in sidebar_main" class="list-group-item" href="#/{{t.linkURL}}">{{t.labelText}}
+                    <i class="fa fa-chevron-right pull-right"></i></a>
+            </div>
         </div>
     </div>
 </div>
@@ -64,19 +64,24 @@
         </div>
 
         <!--<div class="btn-group pull-right" yield-to="navbarAction">-->
-            <!--<div class="btn btn-navbar">-->
-                <!--<i class="fa fa-plus"></i>foo-->
-            <!--</div>-->
+        <!--<div class="btn btn-navbar">-->
+        <!--<i class="fa fa-plus"></i>foo-->
+        <!--</div>-->
         <!--</div>-->
         <div class="btn-group pull-right" yield-to="navbarAction">
-            <div class="btn btn-navbar" onclick="startAngularJS()">
-                startAngularJS
-            </div>
+            <!--<div class="btn btn-navbar" onclick="startAngularJS()">-->
+                <!--startAngularJS-->
+            <!--</div>-->
         </div>
     </div>
 
     <div class="app-body">
-        <div ng-view class="app-content"></div>
+
+        <div ng-view class="app-content">
+            <!--<div id="placeholder">-->
+                <!---->
+            <!--</div> -->
+        </div>
     </div>
 
 </div>

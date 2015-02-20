@@ -14,6 +14,6 @@ sdApp.config(function ($routeProvider) {
             controller: 'ManagerController'
         }).
         otherwise({
-            redirectTo: '/start'
+            redirectTo: '/manager'
         });
 });

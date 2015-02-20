@@ -1,3 +1,18 @@
+<!--<div class="btn-group pull-right" yield-to="navbarAction">-->
+<!--&lt;!&ndash;<div class="btn btn-navbar" onclick="startAngularJS()">&ndash;&gt;-->
+<!--&lt;!&ndash;startAngularJS&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--foo-->
+<!--</div>-->
+
+<div content-for="navbarAction">
+    <!--<button ng-click="resetManagmentPage()">reset</button><span>reset</span>-->
+    <div class="btn btn-navbar" ng-click="resetManagementPage()">
+        <i class="fa fa-refresh"></i> reset
+    </div>
+
+</div>
+
 <div class="scrollable-content">
     <div class="panel">
 
@@ -6,23 +21,24 @@
         </div>
         <div class="panel-body">
 
-            <button ng-click="saveFile()">saveFile</button>
-            <div class="example">
+            <div class="example" ng-hide="filesWereDropped">
                 <div id="dropZone">Drop X-Camera CSV-file(s) here</div>
                 <output id="list"></output>
             </div>
 
-            <div class="col-lg-5">
+            <div ng-show="filesWereDropped">
                 <select ng-model="selectedFile"
                         size="5"
                         id="CSVSelect"
                         ng-options="file.name for file in allCamerasArray">
                 </select>
             </div>
-            <div class="col-lg-5">
-                <output id="fileOutput"></output>
-            </div>
 
+            <div ng-show="selectedFile">
+                <button ng-click="openOverlay()">
+                    show csv
+                </button>
+            </div>
 
             <!--<select ng-model="selectedCategory"-->
             <!--size="5"-->
@@ -32,11 +48,27 @@
             <!--</option>-->
             <!--</select>-->
 
-
             <div class="list-group">
                 <div class="list-group-item"
                      ng-repeat="category in selectedFile.categoriesArray">
-                    <b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>
+
+                    <div ng-show="expectArrayCategoryNames[$index]==category.name">
+                        <b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>
+                    </div>
+
+                    <div ng-show="expectArrayCategoryNames[$index]!=category.name">
+                        <div class="highlightNotMatching">
+                        <b>{{ category.name }} ({{ category.camerasArray.length }} cameras)</b>
+                        <!--<div ng-show="expectArrayCategoryNames[$index]"-->
+                        (should be {{expectArrayCategoryNames[$index]}})
+                    </div>
+                    </div>
+
+
+                    <!--<div ng-show="filesWereDropped">-->
+                    <!--$scope.filesWereDropped=false;-->
+                    <!--</div>-->
+
 
                     <div class="list-group-item"
                          ng-repeat="camera in category.camerasArray">
@@ -51,3 +83,18 @@
     </div>
 </div>
 
+<div overlay="myOverlay">
+    <p toggle="off" bubble target="myOverlay">
+        <!--<span class="btn btn-primary">Ok</span>-->
+        <span class="btn btn-default">close</span>
+    </p>
+    <h4 class="overlay-title">CSV output</h4>
+
+    <b>{{ csvFilename }}</b><br>
+    {{ csvString }}
+
+    <p toggle="off" bubble target="myOverlay">
+        <!--<span class="btn btn-primary">Ok</span>-->
+        <span class="btn btn-default">close</span>
+    </p>
+</div>

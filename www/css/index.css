@@ -7,6 +7,10 @@ a.list-group-item.ng-binding.ng-scope.active {
     border-color:  #ffffff;
 }
 
+.highlightNotMatching {
+    color: #ff3b30;
+}
+
 .overlay {
     -ms-word-break: break-all;
     word-break: break-all;

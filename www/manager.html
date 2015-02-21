@@ -10,14 +10,13 @@
     <div class="btn btn-navbar" ng-click="resetManagementPage()">
         <i class="fa fa-refresh"></i> reset
     </div>
-
 </div>
 
 <div class="scrollable-content">
     <div class="panel">
 
         <div class="panel-heading">
-
+            CSV-Management
         </div>
         <div class="panel-body">
 
@@ -39,6 +38,8 @@
                     show csv
                 </button>
             </div>
+
+
 
             <!--<select ng-model="selectedCategory"-->
             <!--size="5"-->
@@ -85,26 +86,40 @@
                      ng-repeat="category in selectedFile.categoriesArray">
 
                     <div ng-show="expectArrayCategoryNames[$index]==category.name">
-                        Category: <input ng-model="category.name" type="text">({{ category.camerasArray.length }} cameras)
+                        Category:<br>
+                        <input ng-model="category.name" type="text">
+                        <!--<i class="fa fa-chevron-right pull-right"></i>-->
+                        <div class="btn-group-sm pull-right">
+
+                        <button class="btn-sm pull-right" ng-click="categoryMoveUp($index)"><i class="fa fa-caret-up"></i></button>
+                        <button class="btn-sm pull-right" ng-click="categoryMoveDown($index)"><i class="fa fa-caret-down"></i></button>
+                        </div>
+
                     </div>
 
                     <div ng-show="expectArrayCategoryNames[$index]!=category.name">
                         <div class="highlightNotMatching">
-                            Category: <input ng-model="category.name" type="text"> ({{ category.camerasArray.length }} cameras)
-                            (should be "{{expectArrayCategoryNames[$index]}}")
+                            Category:<br>
+                            <input ng-model="category.name" type="text">(should be
+                            "{{expectArrayCategoryNames[$index]}}")
                         </div>
+
                     </div>
+                    <div class="list-group">
+                        <div class="list-group-item list-group-item-camera"
+                             ng-repeat="camera in category.camerasArray">
 
-                    <div class="list-group-item"
-                         ng-repeat="camera in category.camerasArray">
+                            <input ng-model="camera[1]" type="text">
 
-                        <input ng-model="camera[1]" type="text">
-
-                        <!--view ID-->
-                        <div ng-show="camera[2] != 0">(<i class="fa fa-video-camera"></i> view ID {{ camera[2]}})</div>
+                            <!--view ID-->
+                            <div ng-show="camera[2] != 0">(<i class="fa fa-video-camera"></i> view ID {{ camera[2]}})
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
 </div>

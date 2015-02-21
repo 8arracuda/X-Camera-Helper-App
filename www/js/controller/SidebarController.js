@@ -8,6 +8,10 @@ sdApp.controller('SidebarController', function ($scope) {
         {
             labelText: 'Manager',
             linkURL: 'manager'
+        },
+        {
+            labelText: 'About',
+            linkURL: 'about'
         }
     ];
 

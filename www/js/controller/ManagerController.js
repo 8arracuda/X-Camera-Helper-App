@@ -17,7 +17,7 @@ sdApp.controller('ManagerController', function ($scope, $rootScope) {
         "Action Cam",
         "Taxi",
         "Cabin",
-        "Pre-Flight Inspectations",
+        "Pre-Flight Inspections",
         "Orbit Animation 1",
         "Orbit Animation 2",
         "Flyby Animation 1",
@@ -28,6 +28,13 @@ sdApp.controller('ManagerController', function ($scope, $rootScope) {
     $scope.filesWereDropped=false;
 
 
+    $scope.categoryMoveUp = function() {
+        alert('move up (to be implemented');
+    };
+
+    $scope.categoryMoveDown = function() {
+        alert('move down (to be implemented');
+    };
 
     $scope.saveFile = function () {
 

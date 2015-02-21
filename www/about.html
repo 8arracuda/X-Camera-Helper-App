@@ -1,0 +1,67 @@
+<div class="panel">
+    <div class="panel-title">
+        About
+    </div>
+    <div class="panel-body">
+
+        <div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading" toggle target="collapseOne">
+                    <h4 class="panel-title">
+                        Angular JS
+                    </h4>
+                </div>
+                <div id="collapseOne" toggleable active-class="in" exclusion-group="accordion1" default="active"
+                     class="panel-collapse collapse">
+                    <div class="panel-body">
+                        https://angularjs.org/
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" toggle target="collapseTwo">
+                    <h4 class="panel-title">
+                        Apache Cordova
+                    </h4>
+                </div>
+                <div id="collapseTwo" toggleable active-class="in" exclusion-group="accordion1"
+                     class="panel-collapse collapse">
+                    <div class="panel-body">
+                        https://cordova.apache.org/
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-heading" toggle target="collapseThree">
+                    <h4 class="panel-title">
+                        Mobile Angular JS
+                    </h4>
+                </div>
+                <div id="collapseThree" toggleable active-class="in" exclusion-group="accordion1"
+                     class="panel-collapse collapse">
+                    <div class="panel-body">
+                        http://mobileangularui.com/
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-group pull-right toggleable-dropdown" active-class="open" id="myDropdown" toggleable>
+            <button type="button"
+                    class="btn btn-default dropdown-toggle" toggle
+                    target="myDropdown">
+                <i class="fa fa-gear"></i> <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" toggle="off" bubble target="myDropdown">
+                <li><a href>Action</a></li>
+                <li><a href>Another action</a></li>
+                <li><a href>Something else here</a></li>
+                <li class="divider"></li>
+                <li><a href>Separated link</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+

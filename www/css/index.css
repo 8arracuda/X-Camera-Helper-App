@@ -61,3 +61,9 @@ a.list-group-item.ng-binding.ng-scope.active {
 #dropZoneText {
     text-align: center;
 }
+
+.list-group-item-camera {
+    padding-left: 35px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+}
